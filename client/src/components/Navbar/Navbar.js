@@ -4,8 +4,8 @@ import { ShoppingCart, List, X } from "phosphor-react";
 const Navbar = () => {
   const [active, setActive] = useState(false);
   return (
-    <nav className="lg:bg-dark bg-primary text-primary  w-full    border-b-0 md:border-b-4 border-primary drop-shadow	lg:drop-shadow-none ">
-      <div className="container flex items-center justify-between">
+    <nav className="lg:bg-dark bg-primary text-primary   fixed top-0 w-full z-50   border-b-0 md:border-b-4 border-primary drop-shadow	lg:drop-shadow-none ">
+      <div className="lg:container flex items-center justify-between">
         <div className="logo-box hidden lg:block">
           <ul className="cart-logo flex items-center justify-between gap-5 ">
             <li>
@@ -31,34 +31,31 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="menu-list hidden lg:block">
-          <ul className=" flex items-center justify-between gap-10 font-medium uppercase">
+          <ul className=" flex items-center justify-between gap-5 font-medium uppercase">
             <li>
-              <Link to="/" className="hover:translate-y-1 block transition">
+              <Link to="/" className="hover:text-redx transition ">
                 Home
               </Link>
             </li>
             <li>
-              <Link
-                to="/deals"
-                className="hover:translate-y-1 block transition"
-              >
+              <Link to="/deals" className="hover:text-redx transition ">
                 Deals
               </Link>
             </li>
             <li>
-              <Link to="/menu" className="hover:translate-y-1 block transition">
+              <Link to="/menu" className="hover:text-redx transition ">
                 menu
               </Link>
             </li>
             <li>
-              <Link to="/book" className="hover:translate-y-1 block transition">
+              <Link to="/book" className="hover:text-redx transition ">
                 book table
               </Link>
             </li>
           </ul>
         </div>
 
-        <div className="delivery-express flex items-center justify-between  capitalize gap-2 lg:gap-5 bg-primary border-b-0 lg:border-b border-dark">
+        <div className="delivery-express flex items-center justify-between  capitalize gap-2 lg:gap-5 bg-primary border-b-0  lg:border-b border-dark">
           <div className="icon">
             <img
               src="https://res.cloudinary.com/dwrpcntox/image/upload/v1645931037/Fast-Food/vector_mn6etw.svg"
@@ -66,41 +63,59 @@ const Navbar = () => {
               className="h-16 "
             />
           </div>
-          <h1 className="text-base lg:text-2xl font-bold uppercase text-redx">
+          <h1 className="text-sm lg:text-2xl font-bold uppercase text-redx">
             Express delivery
           </h1>
-          <h1 className="text-base lg:text-2xl font-bold uppercase  text-dark mr-3">
+          <h1 className="text-sm lg:text-2xl font-bold uppercase  text-dark mr-3">
             111-222-333
           </h1>
         </div>
-        <div className="hamburger-menu block lg:hidden  ">
+        <div className="hamburger-menu block lg:hidden m-0">
           <button
             className="relative bg-dark p-4 px-10 transition-all"
             onClick={() => setActive(!active)}
           >
             {active ? (
-              <X size={32} color="#ffffff" />
+              <X size={32} color="#FFCC00" />
             ) : (
-              <List size={32} color="#ffffff" />
+              <List size={32} color="#FFCC00" />
             )}
           </button>
           {active && (
             <ul
-              className={`flex items-center min-h-screen flex-col  gap-5  font-medium uppercase absolute w-1/2 bg-dark top-16 right-0 ${
-                active ? "translate-y-0 " : "translate-y-full "
-              } transition-all`}
+              className={`flex   min-h-screen flex-col  gap-0 lg:gap-5  font-medium uppercase absolute w-1/2 bg-dark text-gray-50  top-16 right-0 transition-all`}
             >
-              <li className="mt-5">
-                <Link to="/">Home</Link>
+              <li>
+                <Link
+                  className=" px-5 p-3 hover:bg-primary hover:text-dark transition block"
+                  to="/"
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/deals">Deals</Link>
+                <Link
+                  className=" px-5 p-3 hover:bg-primary transition block  hover:text-dark "
+                  to="/deals"
+                >
+                  Deals
+                </Link>
               </li>
               <li>
-                <Link to="/menu">menu</Link>
+                <Link
+                  className=" px-5 p-3  hover:text-dark hover:bg-primary transition block"
+                  to="/menu"
+                >
+                  menu
+                </Link>
               </li>
-              <li className="mb-5">
-                <Link to="/book">book table</Link>
+              <li>
+                <Link
+                  className=" px-5 p-3 hover:bg-primary  hover:text-dark transition block"
+                  to="/book"
+                >
+                  book table
+                </Link>
               </li>
             </ul>
           )}
