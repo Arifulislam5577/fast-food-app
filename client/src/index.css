@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cart {
+  right: -7px;
+  top: -8px;
+}
+
+.hero {
+  background-image: url(https://res.cloudinary.com/dwrpcntox/image/upload/v1645931032/Fast-Food/bg-1_hcbfg5.png);
+  background-position: center center;
+  background-size: cover;
+  min-height: 80vh;
+}
