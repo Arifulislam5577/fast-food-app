@@ -1,0 +1,39 @@
+.right-side {
+  background-image: url(https://res.cloudinary.com/dwrpcntox/image/upload/v1645931032/Fast-Food/banner-1_pge1mc.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.left-side-top {
+  background-image: url(https://res.cloudinary.com/dwrpcntox/image/upload/v1645931032/Fast-Food/banner-2_vemtjg.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.left-side-bottom {
+  background-image: url(https://res.cloudinary.com/dwrpcntox/image/upload/v1645931032/Fast-Food/banner-3_dodkkc.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.right-side::before,
+.left-side-top::before,
+.left-side-bottom::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}

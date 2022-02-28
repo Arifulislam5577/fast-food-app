@@ -38,8 +38,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/deals" className="hover:text-redx transition ">
-                Deals
+              <Link to="/shop" className="hover:text-redx transition ">
+                shop
               </Link>
             </li>
             <li>

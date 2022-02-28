@@ -11,13 +11,13 @@ const Hero = () => {
             </h3>
             <h2
               className="text-5xl  text-secondary  
-            lg:text-7xl  font-extrabold slide-right text-center lg:text-left"
+            lg:text-6xl font-Alfa tracking-widest	 font-extrabold slide-right text-center lg:text-left"
             >
               THE MIGHTY
             </h2>
             <h1
               className="text-5xl text-secondary  text-center lg:text-left
-            lg:text-7xl  font-extrabold slide-right"
+            lg:text-6xl font-Alfa tracking-widest	 font-extrabold slide-right"
             >
               BURGER
             </h1>
@@ -26,7 +26,7 @@ const Hero = () => {
             <img
               src="https://res.cloudinary.com/dwrpcntox/image/upload/v1645931037/Fast-Food/burger-deal_xartnm.png"
               alt="hero-img"
-              className=""
+              className="scale-in-center"
             />
           </div>
         </div>
