@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, List, X } from "phosphor-react";
+
 const Navbar = () => {
   const [active, setActive] = useState(false);
+
   return (
     <nav className="lg:bg-dark bg-primary text-primary   fixed top-0 w-full z-50   border-b-0 md:border-b-4 border-primary drop-shadow	lg:drop-shadow-none ">
       <div className="lg:container flex items-center justify-between">
@@ -15,7 +17,7 @@ const Navbar = () => {
               >
                 <ShoppingCart size={32} color="#ffffff" className="relative" />
                 <span className="absolute cart bg-secondary rounded-full h-4 flex items-center justify-center w-4 text-gray-100 text-xs">
-                  0
+                  2
                 </span>
               </Link>
             </li>

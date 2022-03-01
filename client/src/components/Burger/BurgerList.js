@@ -29,7 +29,7 @@ const BurgerList = () => {
                 tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
               <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                order now
+                add to cart
               </button>
             </div>
           </div>
@@ -49,7 +49,7 @@ const BurgerList = () => {
                 tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
               <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                order now
+                add to cart
               </button>
             </div>
           </div>
@@ -69,7 +69,7 @@ const BurgerList = () => {
                 tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
               <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                order now
+                add to cart
               </button>
             </div>
           </div>

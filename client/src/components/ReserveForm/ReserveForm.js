@@ -39,7 +39,7 @@ const ReserveForm = () => {
                 placeholder="Number Of People"
               />
               <select className="border-2 rounded p-3 placeholder-secondary">
-                <option selected>Timing</option>
+                <option>Timing</option>
                 <option value="Morning">Morning</option>
                 <option value="Evening">Evening</option>
               </select>
