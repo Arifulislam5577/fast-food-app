@@ -45,6 +45,7 @@ const BurgerList = () => {
                       {title}
                     </h2>
                     <p className="text-sm text-gray-600 my-4">{description}</p>
+
                     <div className="flex items-center justify-center">
                       {cart.find((pd) => pd._id === _id) ? (
                         <button

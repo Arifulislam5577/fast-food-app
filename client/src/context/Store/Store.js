@@ -29,6 +29,23 @@ const DataProvider = (props) => {
       setCart([...cart, product]);
     }
   };
+
+  const removeFromCart = (id) => {
+    const product = cart.filter((pd) => pd._id !== id);
+    setCart(product);
+  };
+
+  const incrementQty = (id, qty) => {
+    const product = cart.find((pd) => pd._id === id);
+    product.qty = qty + 1;
+    setCart([...cart]);
+  };
+  const decrementQty = (id, qty) => {
+    const product = cart.find((pd) => pd._id === id);
+    product.qty = qty - 1;
+    setCart([...cart]);
+  };
+
   localStorage.setItem("cartItems", JSON.stringify(cart));
 
   useEffect(() => {
@@ -47,7 +64,17 @@ const DataProvider = (props) => {
 
   return (
     <DataContext.Provider
-      value={{ loading, load, products, error, cart, addToCart }}
+      value={{
+        loading,
+        load,
+        removeFromCart,
+        products,
+        error,
+        cart,
+        addToCart,
+        incrementQty,
+        decrementQty,
+      }}
     >
       {props.children}
     </DataContext.Provider>
