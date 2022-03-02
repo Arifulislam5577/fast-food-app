@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../context/Store/Store";
+import { SpinnerGap } from "phosphor-react";
 
 const BurgerList = () => {
+  const navigate = useNavigate();
+  const { loading, load, products, error, addToCart, cart } =
+    useContext(DataContext);
+
   return (
     <section className="py-10">
       <div className="container">
@@ -13,66 +20,61 @@ const BurgerList = () => {
           </h1>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <div className="product flex flex-col items-center justify-center shadow rounded-md p-3">
-            <div className="product-image">
-              <img
-                src="https://res.cloudinary.com/dwrpcntox/image/upload/v1645931033/Fast-Food/burger-1-300x216_qweew3.png"
-                alt="product-title"
-              />
-            </div>
-            <div className="product-details text-center">
-              <h2 className="text-3xl font-bold text-secondary">
-                CRISPY CHICKEN
-              </h2>
-              <p className="text-sm text-gray-600 my-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
-              <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                add to cart
-              </button>
-            </div>
-          </div>
-          <div className="product flex flex-col items-center justify-center shadow rounded-md p-3">
-            <div className="product-image">
-              <img
-                src="https://res.cloudinary.com/dwrpcntox/image/upload/v1645931035/Fast-Food/burger-3-300x234_gcgdw4.png"
-                alt="product-title"
-              />
-            </div>
-            <div className="product-details text-center">
-              <h2 className="text-3xl font-bold text-secondary">
-                DOUBLE TREAT
-              </h2>
-              <p className="text-sm text-gray-600 my-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
-              <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                add to cart
-              </button>
-            </div>
-          </div>
-          <div className="product flex flex-col items-center justify-center shadow rounded-md p-3">
-            <div className="product-image">
-              <img
-                src="https://res.cloudinary.com/dwrpcntox/image/upload/v1645931034/Fast-Food/burger-2-300x241_zpblvl.png"
-                alt="product-title"
-              />
-            </div>
-            <div className="product-details text-center">
-              <h2 className="text-3xl font-bold text-secondary">
-                GRILLED BEEF
-              </h2>
-              <p className="text-sm text-gray-600 my-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-              </p>
-              <button className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx">
-                add to cart
-              </button>
-            </div>
-          </div>
+          {loading ? (
+            <SpinnerGap
+              size={96}
+              color="#ffcc00"
+              weight="fill"
+              className="spinner"
+            />
+          ) : error ? (
+            <h1>{error}</h1>
+          ) : (
+            products?.map((product) => {
+              const { _id, title, description, url } = product;
+              return (
+                <div
+                  className="product flex flex-col items-center justify-center shadow rounded-md p-3"
+                  key={_id}
+                >
+                  <div className="product-image">
+                    <img src={url} alt={title} />
+                  </div>
+                  <div className="product-details text-center">
+                    <h2 className="text-3xl font-bold text-secondary">
+                      {title}
+                    </h2>
+                    <p className="text-sm text-gray-600 my-4">{description}</p>
+                    <div className="flex items-center justify-center">
+                      {cart.find((pd) => pd._id === _id) ? (
+                        <button
+                          className="px-5 p-2 text-dark rounded-md uppercase bg-gray-400"
+                          onClick={() => navigate("/cart")}
+                        >
+                          view cart
+                        </button>
+                      ) : (
+                        <button
+                          className="px-5 p-2 text-gray-50 rounded-md uppercase bg-redx flex items-center justify-center"
+                          onClick={() => addToCart(_id)}
+                        >
+                          order now
+                          {load && (
+                            <SpinnerGap
+                              size={24}
+                              color="#fff"
+                              weight="fill"
+                              className="spinner"
+                            />
+                          )}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </section>

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, List, X } from "phosphor-react";
+import { DataContext } from "../../context/Store/Store";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
+  const { cart } = useContext(DataContext);
 
   return (
     <nav className="lg:bg-dark bg-primary text-primary   fixed top-0 w-full z-50   border-b-0 md:border-b-4 border-primary drop-shadow	lg:drop-shadow-none ">
@@ -17,7 +19,7 @@ const Navbar = () => {
               >
                 <ShoppingCart size={32} color="#ffffff" className="relative" />
                 <span className="absolute cart bg-secondary rounded-full h-4 flex items-center justify-center w-4 text-gray-100 text-xs">
-                  2
+                  {cart.reduce((acc, item) => acc + item.qty * 1, 0)}
                 </span>
               </Link>
             </li>
