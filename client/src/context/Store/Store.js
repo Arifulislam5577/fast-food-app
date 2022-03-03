@@ -6,11 +6,17 @@ const DataProvider = (props) => {
   const cartItemsFromStorage = localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [];
+
+  const userInfoFromStorage = localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null;
+
   const [loading, setLoading] = useState(false);
   const [load, setLoad] = useState(false);
   const [error, setError] = useState("");
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState(cartItemsFromStorage);
+  const [userInfo, setUserInfo] = useState(userInfoFromStorage);
 
   const addToCart = async (id) => {
     setLoad(true);
@@ -48,6 +54,32 @@ const DataProvider = (props) => {
 
   localStorage.setItem("cartItems", JSON.stringify(cart));
 
+  // USER LOGIN/REGISTER
+
+  const register = async (name, email, password) => {
+    console.log(name, email, password);
+    try {
+      setLoading(true);
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        `/api/v1/users/signup`,
+        { name, email, password },
+        config
+      );
+      setLoading(false);
+      setUserInfo(data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -74,6 +106,7 @@ const DataProvider = (props) => {
         addToCart,
         incrementQty,
         decrementQty,
+        register,
       }}
     >
       {props.children}

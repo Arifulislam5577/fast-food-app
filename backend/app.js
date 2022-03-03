@@ -6,6 +6,7 @@ import morgan from "morgan";
 dotenv.config();
 
 import ProductRouter from "./routes/productRoutes.js";
+import UserRouter from "./routes/authRoutes.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 
 app.use("/api/v1/products", ProductRouter);
+app.use("/api/v1/users", UserRouter);
 
 mongoose.connect(process.env.DATABASE_URL, () => {
   console.log("connect database is available");

@@ -2,7 +2,7 @@ import React from "react";
 
 const Menu = () => {
   return (
-    <section className="py-10">
+    <section className="py-10" id="menu">
       <div className="container">
         <h2 className="lg:text-5xl text-3xl  text-center  font-extrabold text-secondary tracking-wider	 uppercase font-Alfa">
           CHECK MENU

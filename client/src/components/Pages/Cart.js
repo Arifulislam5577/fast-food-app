@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../context/Store/Store";
 import { ClipboardText, Trash, Plus, Minus } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const { cart, removeFromCart, incrementQty, decrementQty } =
     useContext(DataContext);
@@ -17,6 +18,12 @@ const Cart = () => {
   const totalItems = cart.reduce((acc, item) => acc + item.qty * 1, 0);
   const shippingPrice = totalItemsPrice > 20 ? 0 : 5;
   const totalPrice = totalItemsPrice + shippingPrice;
+
+  const navigate = useNavigate();
+
+  const handleCheckOut = () => {
+    navigate("/login?redirect=/order");
+  };
   return (
     <section className="py-10 my-14">
       <div className="container">
@@ -83,7 +90,7 @@ const Cart = () => {
                 </tbody>
               </table>
               <div>
-                <h1 className="text-center p-2 uppercase text-xl font-medium bg-gray-100">
+                <h1 className="text-center p-2 uppercase text-xl font-bold bg-gray-100">
                   cart total
                 </h1>
                 <ul className="flex items-center justify-between p-2 border-l border-r border-b">
@@ -102,7 +109,10 @@ const Cart = () => {
                   <li>Total Price</li>
                   <li>${formatNum(totalPrice)}</li>
                 </ul>
-                <ul className="flex items-center justify-center text-gray-50 p-2 border-l border-r border-b bg-primary ">
+                <ul
+                  className="flex items-center justify-center text-gray-50 p-2 border-l border-r border-b bg-primary "
+                  onClick={handleCheckOut}
+                >
                   <button className="w-full">Proceed to checkout</button>
                 </ul>
               </div>

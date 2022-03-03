@@ -2,7 +2,7 @@ import React from "react";
 import "./Reserve.css";
 const ReserveForm = () => {
   return (
-    <section className="py-10 reserve w-full">
+    <section className="py-10 reserve w-full" id="table">
       <div className="container">
         <h2 className="lg:text-5xl text-3xl  text-center  font-extrabold text-secondary tracking-wider	 uppercase font-Alfa">
           RESERVE TABLE

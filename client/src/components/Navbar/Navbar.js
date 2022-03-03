@@ -41,20 +41,16 @@ const Navbar = () => {
                 Home
               </Link>
             </li>
+
             <li>
-              <Link to="/shop" className="hover:text-redx transition ">
-                shop
-              </Link>
-            </li>
-            <li>
-              <Link to="/menu" className="hover:text-redx transition ">
+              <a href="#menu" className="hover:text-redx transition ">
                 menu
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="/book" className="hover:text-redx transition ">
+              <a href="#table" className="hover:text-redx transition ">
                 book table
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
